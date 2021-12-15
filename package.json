@@ -1,0 +1,25 @@
+{
+  "name": "fullstack-node",
+  "version": "1.0.0",
+  "description": "이젠아카데미 풀스택 개발자 과정 노드 수업소스",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ITPAPER/fullstack-node.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "leekh (leekh4232@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ITPAPER/fullstack-node/issues"
+  },
+  "homepage": "https://github.com/ITPAPER/fullstack-node#readme",
+  "dependencies": {
+  }
+}
