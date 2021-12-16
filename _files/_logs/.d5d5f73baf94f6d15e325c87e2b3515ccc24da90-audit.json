@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "/Users/leekh/fullstack-node/_files/_logs/.d5d5f73baf94f6d15e325c87e2b3515ccc24da90-audit.json",
+    "files": [
+        {
+            "date": 1639581603705,
+            "name": "/Users/leekh/fullstack-node/_files/_logs/log_211216.log",
+            "hash": "4e67c03e12cef302b393533151ba5460"
+        }
+    ]
+}
