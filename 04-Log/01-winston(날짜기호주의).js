@@ -58,9 +58,9 @@ const logger = winston.createLogger({
             datePattern: 'YYMMDD',           // 파일 이름에 표시될 날짜형식
             dirname: config.log.debug.path,  // 파일이 저장될 위치
             filename: 'log_%DATE%.log',      // 파일이름 형식. %DATE%는 datePattern의 값
-            maxSize: 50000000,                     //
+            maxSize: 50000000,                  
             maxFiles: 50,
-            zippedArchive: true              //
+            zippedArchive: true             
         }),
 
         // 하루에 하나씩 파일 형태로 기록하기 위한 설정
@@ -69,10 +69,10 @@ const logger = winston.createLogger({
             level: config.log.debug.level,   // 출력할 로그의 수준.
             datePattern: 'YYMMDD',           // 파일 이름에 표시될 날짜형식
             dirname: config.log.debug.path,  // 파일이 저장될 위치
-            filename: 'error_%DATE%.log',      // 파일이름 형식. %DATE%는 datePattern의 값
-            maxSize: 50000000,                     //
+            filename: 'error_%DATE%.log',    // 파일이름 형식. %DATE%는 datePattern의 값
+            maxSize: 50000000,                    
             maxFiles: 50,
-            zippedArchive: true              //
+            zippedArchive: true              
         })
     ]
 });

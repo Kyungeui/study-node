@@ -6,7 +6,7 @@
 // --> 웹 브라우저의 콘솔 대신 지정된 파일에 출력내용들이 기록된다.
 // --> 이 내용을 확인하려 백엔드의 실행 과정을 가늠할 수 있다.
 
-const logger = require('../helper/LogHelper(날짜기호주의)');
+const logger = require('../helper/LogHelper');
 
 logger.error('error 메세지 입니다.');
 logger.warn('warn 메세지 입니다.');

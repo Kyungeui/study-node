@@ -1,39 +1,19 @@
-/** (1) 모듈참조, 필요한 변수 생성 */
-const fs = require('fs');               // FileSystem 모듈 참조
-const target = './output_sync.txt';     // 저장할 파일의 경로()
-const content = 'Hello World';          // 저장할 내용
-const isExists = fs.existsSync(target); // 파일의 존재 여부 검사
+var fs = require('fs');             
+var target = './output_sync.txt';   // 읽어들일 파일의 경로
 
-if (!isExists) {
-    //** (2) 파일이 존재하지 않을 경우 새로 저장 */
-    // 절대경로 지정, 비동기식 파일 저장
-    fs.writeFileSync(target, content, 'utf8', (err) => {
+if (fs.existsSync(target)) {
+    // 파일을 비동기식으로 파일 읽기
+    // 파일을 다 읽을 때까지 대기하지 않고 프로그래은 다음으로 진행.
+    // --> 파일 읽기가 종료되면 세번째 파라미터인 콜백함수가 호출된다.
+    fs.readFile(target, 'utf8', (err, data) => {
         if (err) {
-            console.error(err);
+            console.err(err);
             return;
         }
-
-        console.debug(target + '에 데이터 쓰기 완료.');
-
-        // 퍼미션 설정
-        fs.chmodSync(target, 0766, (err) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            console.debug(target + '의 퍼미션 설정 완료.');
-        });
-        console.debug(target + '의 퍼미션 설정을 요청했습니다.');
+        console.debug(data); // 읽어 들인 데이터 출력
     });
-    console.debug(target + '의 파일 저장을 요청했습니다.');
+    console.debug(target + ' 파일을 읽도록 요청했습니다.');
 } else {
-    /** (3) 파일이 존재할 경우 파일 삭제 */
-    fs.unlink(target, (err) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        console.debug(target + '의 파일 삭제 완료.');
-    });
-    console.debug(target + '의 파일 삭제를 요청했습니다.');
+    console.debug(target + ' 파일이 존재하지 않습니다.');
 }
+

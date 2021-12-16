@@ -10,12 +10,12 @@ const Radio = function () {
     /** (5) 객체 생성됨 **/
     // (3)에서 클래스의 상속이 이루어 졌으므로 
     // 생성자에게 상위 클래스의 생성자를 호출하도록 지정. --> 상속구현
-    events.EventEmiter.call(this);
+    events.EventEmitter.call(this);
 };
 
 /* (3) 클래스의 상속처리 --> util.inherits(자식클래스, 부모클래스) */
 // --> (2)에서 정의한 Radio의 기능이 확장된다.
-util.inherits(Radio, events.EventEmiter);
+util.inherits(Radio, events.EventEmitter);
 
 /* (4) 직접 정의한 클래스에 대한 객체를 생성 */
 // --> 생성자 함수를 실행한다는 의미
@@ -28,7 +28,7 @@ const radio = new Radio();
  * 해당 eventEmitter에 연결될 수 있는 이벤트 리스너의 수를 설정한다.
  * 기본값 10개
  *------------------------------------------------------*/
-radio.serMaxListners(5);
+radio.setMaxListeners(5);
 
 /* (6) 이벤트 리스너에 이벤트 핸들러 연결하기 --> 이벤트 이름은 사용자가 직접 정의 */
 /*------------------------------------------------------
@@ -86,6 +86,6 @@ for (let i=0; i<2; i++) {
 |        익명 함수 방식이 아닌, 별도로 이름을 갖는 함수를
 |        정의해야만 한다.
  *------------------------------------------------------*/
-radio.removeListener('turn', onTurnOn);
+radio.removeListener('turnon', onTurnOn);
 // 제거결과 확인하기
-radio.emit('turn', 1000);
+radio.emit('turnon', 1000);

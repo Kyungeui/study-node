@@ -1,14 +1,26 @@
-var fs = require('fs');             // FileSystem 모듈 참조
-var target = './output_sync.txt';   // 읽어들일 파일의 경로
+/** (1) 모듈참조, 필요한 변수 생성 */
+const fs = require('fs');               // FileSystem 모듈 참조
+const target = './output_sync.txt';     // 저장할 파일의 경로
+const content = 'Hello World';          // 저장할 내용
+const isExists = fs.existsSync(target); // 파일의 존재 여부 검사
 
-if (fs.existsSync(target)) {
-    // 파일을 동기식으로 읽어서 그 내용을 리턴한다.
-    // 이 파일을 다 읽기 전까지는 프로그램이 대기상태임.
-    // 그러므로 대용량 처리에는 적합하지 않음.
-    var data = fs.readFileSync(target, 'urf8');
+if (!isExists) {
+    //** (2) 파일이 존재하지 않을 경우 새로 저장 */
+    // 저장할 경로는 상대,절대 경로 모두 가능
+    // 상대 경로인 경우 vscode에 설정된 작업 디렉토리가 기준
+    // 절대 경로인 경우 컴퓨터 전역에 대해서 지정 가능 -> ex) c:/hello/world, c:\\hello\\world
+    // 여기서는 상대경로 지정, 동기식 파일 저장.
+    // 이 파일을 저장하기 전까지는 프로그램이 대기상태임.
+    // 그러므로 대용량 처리에는 적하하지 않음.
+    fs.writeFileSync(target, content, 'utf8');
 
-    // 읽어 들인 데이터를 출력
-    console.log(data);
+    // 퍼미션 설정
+    fs.chmodSync(target, 0766);
+
+    // 파일 저장이 완료된 후에나 메세지가 표시된다.
+    console.log(target + ' 파일에 데이터 쓰기 및 퍼미션 설정 완료.');
 } else {
-    console.log(target + "파일이 존재하지 않습니다.");
+    /** (3) 파일이 존재할 경우 파일 삭제 */
+    fs.unlinkSync(target)
+    console.log(target + ' 파일 삭제 완료. '); 
 }

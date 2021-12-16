@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/ITPAPER/fullstack-node#readme",
   "dependencies": {
+    "dayjs": "^1.10.7",
+    "node-schedule": "^2.1.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
   }
