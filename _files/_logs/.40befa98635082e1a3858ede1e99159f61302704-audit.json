@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "/Users/chanillekim/study-node/_files/_logs/.40befa98635082e1a3858ede1e99159f61302704-audit.json",
+    "files": [
+        {
+            "date": 1639962557167,
+            "name": "/Users/chanillekim/study-node/_files/_logs/log_211220.log",
+            "hash": "cd4d30d97d6fe37ae047043e5f7db406"
+        }
+    ]
+}

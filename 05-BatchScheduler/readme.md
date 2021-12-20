@@ -69,7 +69,7 @@ schedule.scheduleJob(특정시각|시간규칙, function() {
 
 ### 표현식 생성하기
 
-https://crontab-generator.org/ 
+https://crontab.guru/
 
 ### 매 1분마다
 

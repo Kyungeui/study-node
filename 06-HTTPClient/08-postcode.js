@@ -7,7 +7,7 @@ const axios = require('axios');
       // axios를 활용하여 다른 백엔드에게 HTTP GET 파라미터를 전달하고 결과를 리턴받는다.
       const response = await axios.get("https://www.juso.go.kr/addrlink/addrLinkApi.do", {
           parmas: {
-              confmKey: '000000000000000',        // 발급받은 승인키
+              confmKey: 'U01TX0FVVEgyMDIxMTIxNzEyMDcyMDExMjA0MTk=',        // 발급받은 승인키
               currentPage: 1,       // 현재 페이지 번호
               currentPerPage: 20,   // 페이지당 출력할 결과 Row 수
               keyword: '서초동',      // 주소 검색어

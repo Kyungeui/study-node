@@ -15,7 +15,7 @@ module.exports.mkdirs = (target, permission=0755) => {
     // target = target.replace(|\\/gi, "/");
     // node.js 17버전 이상가능
     // --> target = "a/b/c"
-    target = target.replaceAll("\\", "/");
+   
 
     // 주어진 경로값을 "/"단위로 자른다
     // --> target_list = ["a", "b", "c"]
