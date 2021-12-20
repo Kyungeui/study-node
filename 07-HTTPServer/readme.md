@@ -52,10 +52,3 @@ A라는 프로그램이 B라는 프로그램에게 어떤 데이터를 요청하
 | 공통적으로 쉽고, 빠르게 개발이 가능하지만 대규모 시스템을 견디기에는 다소 무리가 있다.
 | 그래서 주로 서비스 초창기에 Node.js, Django등으로 구축을 하고 이용자가 늘어나기 시작하면 Java로 재구축을 하는 추세임.
 | ex) Netflix
-
-
-## INSOMNIA
-
-postman과 같은 목적의 도구
-
-https://insomnia.rest/download

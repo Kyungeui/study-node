@@ -69,7 +69,7 @@ if (process.env.NODE_ENV !== 'production') {
             level: config.log.debug.level,
             format: combine(
                 winston.format.colorize(),
-                prinf((info) => {
+                printf((info) => {
                     return `${info,timestamp} [${info.level}]: ${info.message}`;
                 })
             )
