@@ -104,7 +104,7 @@ router.route('/page2').get((req, res, next) => {
     /** 방법(2) - express 기능을 사용 */
     // 브라우저에게 전달할 응답 내용
     let html = "<h1>Page2</h1>";
-    html += "<h2>Express로 구현한 Node.js 백엔드 페이지</h2>";
+    html += "<h2>Node.js Backend Page</h2>";
 
     res.writeHead(200);
     res.write(html);
@@ -113,7 +113,7 @@ router.route('/page2').get((req, res, next) => {
 
 router.route('/page3').get((req, res, next) => {
     // 페이지 강제 이동
-    res.redirect('http://wwww.naver.com');
+    res.redirect('http://www.naver.com');
 });
 
 /*--------------------------------------------------------

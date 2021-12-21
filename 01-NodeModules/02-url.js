@@ -24,7 +24,7 @@ console.groupEnd();
 /** (3) JSON객체를 주소 문자열로 만들기 */
 // 불필요한 정보를 제외할 수 있다.
 const info = {
-    protocol: 'http',
+    protocol: 'http:',
     hostname: 'www.itpaper.co.kr',
     port: '8080',
     pathname: '/hello/world.html',

@@ -10,7 +10,7 @@ const path = require('path');
 /** (2) 경로 합치기 */
 // 파라미터의 제한이 없다.
 // 조합된 경로 문자열에 해당하는 Path가 실제로 존재하는지는 상관없다.
-const currentPath = path.join('C:/Users?hello?world', 'myphoto', '../photo.jpg');
+const currentPath = path.join('C:/Users/hello/world', 'myphoto', '../photo.jpg');
 console.group("path.join");
 console.debug(currentPath);
 console.groupEnd();
@@ -30,8 +30,8 @@ console.groupEnd();
 const parse = path.parse(currentPath);
 console.group('경로정보 파싱');
 console.debug('%o', parse);
-console.debug('root', + parse.root);
-console.debug('dir', + parse.dir);
-console.debug('name', + parse.name);
-console.debug('ext', + parse.ext);
+console.debug('root:' + parse.root);
+console.debug('dir:' + parse.dir);
+console.debug('name:' + parse.name);
+console.debug('ext:' + parse.ext);
 console.groupEnd();
