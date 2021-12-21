@@ -36,7 +36,7 @@ app.use((req, res, next) => {
     // 클라이언트가 접속한 시간
     const beginTime = Date.now();
 
-    // 클라리언트의 IPwnth
+    // 클라리언트의 IP주소
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
 
     // 클라이언트의 디바이스 정보 기록 (UserAgent 사용)
@@ -114,6 +114,43 @@ router.route('/page2').get((req, res, next) => {
 router.route('/page3').get((req, res, next) => {
     // 페이지 강제 이동
     res.redirect('http://www.naver.com');
+});
+
+/** 02-GetParams */
+/** Get 파라미터를 처리하기 위한 페이지 정의 */
+router.route('./send.get').get((req, res, next) => {
+    // GET파라미터들은 req.query 객체의 하위 데이터로 저장된다.
+    for (key in req.query) {
+        const str = "프론트엔드로부터 전달받은 변수 ::: " + key + "=" + req.query[key];
+        logger.debug(str);
+    }
+
+    // /send_get?answer=0000 형태로 접근한 경우 answer파라미터 값 추출
+    const answer = req.query.answer;
+    let html = null;
+
+    if (parseInt(answer) == 300) {
+        html = "<h1 style=' color:#0066ff'>정답입니다</h1>"; 
+    } else {
+        html = "<h1 style=' color:#ff6600'>틀렸습니다</h1>";
+    }
+
+    res.status(200).send(html);
+});
+
+/** URL 파라미터를 처이하기 위한 라우터 등록 */
+// http://<hostname>:<post>/페이지이름/변수1/변수2
+router.route('/send_url/:username/:age').get((req, res, next) => {
+    // URL 파라미터들은 req.params 객체의 하위 데이터로 저장된다.
+    // 전달받은 URL 파라미터는 GET파라미터와 같은 방법으로 사용 가능함.
+    for (key in req.params) {
+        const str = "프론트엔트로부터 전달받은 변수 ::: " + key + "=" + req.params[key];
+        logger.debug(str);
+    }
+
+    const html = "<h1><spna style='color:#0066ff'>" + req.params.username + "</spna>님은 <span style='color:#ff6600'>" + req.params.age + "</span>세 입니다.</h1>";
+
+    res.status(200).send(html);
 });
 
 /*--------------------------------------------------------
