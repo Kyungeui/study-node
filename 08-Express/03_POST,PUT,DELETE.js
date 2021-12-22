@@ -86,7 +86,27 @@ app.use(favicon(public_path + '/favicon.png'));
 const router = express.Router();
 // 라우터를 express에 등록
 app.use('/', router);
+/*--------------------------------------------------------
+| 4) Express 객체의 추가 설정
+----------------------------------------------------------*/
+/** POST 파라미터 수신 모듈 설정.
+ *  추가 모듈들 중 UserAgent를 제외하고 가장 먼저 설정해야 함 */
+// body-parser를 이용해 application/x-www-form-urlencoded 파싱
+// extended: true --> 지속적 사용
+// extended: flase --> 한번만 사용
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());     // TEXT 형식의 파라미터 수신 가능.
+app.use(bodyParser.json());     // JSON 형식의 파라미터 수신 가능.
 
+/** HTTP PUT, DELETE 전송방식 확장 */
+// 브라우저 개발사들이 PUT, DELETE 방식으로 전송하는 HTTP Header 이름
+app.use(methodOverride('X-HTTP-Method'));            // Microsoft
+app.use(methodOverride('X-HTTP-Method-Overrise'));   // Google/GData
+app.use(methodOverride('X-Method-Overrise'));        // IBM
+// HTML폼에서 PUT, DELETE로 전송할 경우 pot방식을 사용하되, action 주소에 '?_method' 라고 추가.
+app.use(methodOverride('_method'));                  // HTML form
+
+/** HTML,CSS,IMG,JS 등의 정적 파일을 URL에 노출시킬 폴더 연결 */
 /*--------------------------------------------------------
 | 5) 각 URL별 백엔드 기능 정의
 ----------------------------------------------------------*/
@@ -155,6 +175,58 @@ router.route('/send_url/:username/:age').get((req, res, next) => {
     res.status(200).send(html);
 });
 
+/** 03-Post,Put,Delete.js */
+/** POST 파라미터를 처리하기 위한 라우터 등록 */
+router.route('/send_post').post((req, res, next) => {
+    // URL 파라미터들은 req.body 객체의 하위 데이터로 저장된다.
+    for (key in req.body) {
+        const str = "프론트엔드로부터 전달받은 변수 ::: " + key + "=" + req.body[key];
+        logger.debug(str);
+    }
+
+    const html = "<h1><spna style='color:#0066ff'>" + req.body.username + "</spna>님은 <span style='color:#ff6600'>" + req.body.grade + "</span>학년 입니다.</h1>";
+
+    res.status(200).send(html);
+});
+
+/** DELETE 파라미터를 처리하기 위한 라우터 등록 */
+router.route('/send_delete').delete((req, res, next) => {
+    // URL 파라미터들은 req.body 객체의 하위 데이터로 저장된다.
+    for (key in req.body) {
+        const str = "프론트엔드로부터 전달받은 변수 ::: " + key + "=" + req.body[key];
+        logger.debug(str);
+    }
+
+    const html = "<h1><spna style='color:#0066ff'>" + req.body.username + "</spna>님은 <span style='color:#ff6600'>" + req.body.point + "</span>점 입니다.</h1>";
+
+    res.status(200).send(html);
+});
+
+/** 상품에 대한 Restful API 정의하기 */
+// 위의 형태처럼 개별적인 함수로 구현 가능하지만 대부분 하나의 URL에 메서드 체인을 사용해서 4가지 전송방식을 한번에 구현
+router.route('/product')
+    .get((req, res, next) => {
+        // URL Params 형식으로 조회할 상품의 일련번호를 전달받아야 한다.
+        const html = "<h1><spna style='color:#0066ff'>" + req.query.productNumber + "</spna> 번 상품 <span style='color:#ff6600'>조회</span>하기</h1>";
+        res.status(200).send(html);
+    })
+    .post((req, res, next) => {
+        // <form> 상에 저장할 상품 정보를 입력 후 전송한다.(주로 관리자 기능)
+        // 저장시에는 일련번호는 전송하지 않으며 저장후 자동으로 발급되는 일련번호를 프론트에게 돌려줘야 한다.
+        const html = "<h1><spna style='color:#0066ff'>" + req.body.productNumber + "</spna> 상품 <span style='color:#ff6600'> 등록 </span>하기</h1>";
+        res.status(200).send(html);
+    })
+    .put((req, res, next) => {
+        // <form> 상에 수정 상품 정보를 입력 후 전송한다.(주로 관리자 기능)
+        // 몇번 상품을 수정할지 식별하기 위해 상품 일련번호가 함께 전송된다.
+        const html = "<h1><spna style='color:#0066ff'>" + req.body.productNumber + "</spna> 상품 <span style='color:#ff6600'> 수정 </span>하기</h1>";
+        res.status(200).send(html);
+    })
+    .delete((req, res, next) => {
+        // 삭제할 상품의 일련번호 전송
+        const html = "<h1><spna style='color:#0066ff'>" + req.body.productNumber + "</spna> 상품 <span style='color:#ff6600'> 삭제 </span>하기</h1>";
+        res.status(200).send(html);
+    });
 /*--------------------------------------------------------
 | 6) 설정한 내용을 기반으로 서버 구동 시작
 ----------------------------------------------------------*/
