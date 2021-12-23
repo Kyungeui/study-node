@@ -73,22 +73,6 @@ app.use((req, res, next) => {
 /*--------------------------------------------------------
 | 4) Express 객체의 추가 설정
 ----------------------------------------------------------*/
-/** HTML,CSS,IMG,JS 등의 정적 파일을 URL에 노출시킬 폴더 연결 */
-// "http://아이피:포트번호" 이후의 경로가 router에 등록되지 않은 경로리면
-// static 모듈에 연결된 폴더 안에서 해당 경로를 탐색한다.
-const public_path = path.join(__dirname, '../public');
-app.use("/", static(public_path));
-
-/** favicon 설정 */
-app.use(favicon(public_path + '/favicon.png'));
-
-/** 라우터(URL 분배기) 객체 설정 --> 맨 마지막에 설정 */
-const router = express.Router();
-// 라우터를 express에 등록
-app.use('/', router);
-/*--------------------------------------------------------
-| 4) Express 객체의 추가 설정
-----------------------------------------------------------*/
 /** POST 파라미터 수신 모듈 설정.
  *  추가 모듈들 중 UserAgent를 제외하고 가장 먼저 설정해야 함 */
 // body-parser를 이용해 application/x-www-form-urlencoded 파싱
@@ -107,6 +91,19 @@ app.use(methodOverride('X-Method-Overrise'));        // IBM
 app.use(methodOverride('_method'));                  // HTML form
 
 /** HTML,CSS,IMG,JS 등의 정적 파일을 URL에 노출시킬 폴더 연결 */
+// "http://아이피:포트번호" 이후의 경로가 router에 등록되지 않은 경로리면
+// static 모듈에 연결된 폴더 안에서 해당 경로를 탐색한다.
+const public_path = path.join(__dirname, '../public');
+app.use("/", static(public_path));
+
+/** favicon 설정 */
+app.use(favicon(public_path + '/favicon.png'));
+
+/** 라우터(URL 분배기) 객체 설정 --> 맨 마지막에 설정 */
+const router = express.Router();
+// 라우터를 express에 등록
+app.use('/', router);
+
 /*--------------------------------------------------------
 | 5) 각 URL별 백엔드 기능 정의
 ----------------------------------------------------------*/
