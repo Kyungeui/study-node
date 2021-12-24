@@ -17,6 +17,7 @@ const methodOverride = require('method-override'); // PUT 파라미터 처리
 const cookieParser = require('cookie-parser');     // Cookie 처리
 const expressSession = require('express-session'); // Session 처리
 const multer = require('multer');                  // 업로드 모듈
+const nodemailer = require('nodemailer');          // 메일발송 --> app.use()로 추가설정 필요 없음.
 
 /*--------------------------------------------------------
 | 2) Express 객체 생성
@@ -376,7 +377,7 @@ router.route('/session')
         // name 속성값이 myphto인 경우, 업로드를 수행
         const upload = multipart.single('myphoto');
 
-        upload(req, res, async(err) => {
+        upload(req, res, (err) => {
             let result_code = 200;
             let result_name = 'ok';
 
@@ -519,6 +520,51 @@ router.route('/upload/mutiple')
         res.status(result_code).send(result);
     });
 });
+
+/** 07-SendMailjs */
+router.route('/send_mail').post(async(req, res, next) => {
+    /** 1) 프론트엔드에서 전달한 사용자 입력값 */
+    const writer_name = req.body.writer_name;
+    let writer_email = req.body.writer_email;
+    const receiver_name = req.body.receiver_name;
+    let receiver_email = req.body.receiver_email;
+    const subject = req.body.subject;
+    const content = req.body.content;
+
+    /** 2) 보내는 사람, 받는 사람의 메일주소와 이름 */
+    // 보내는 사람의 이름과 주소
+    if (writer_name) {
+        // ex) 이광호 <leekh4232@gmail.com>
+        writer_email = writer_name + '<' + writer_email + '>';
+    }
+
+    // 받는 사람의 이름과 주소
+    if (receiver_name) {
+        receiver_email = receiver_name + '<' + receiver_email + '>';
+    }
+
+    /** 3) 메일 발송정보 구성 */
+    const send_info = { from: writer_email, to: receiver_email, subject: subject, html: content };
+    logger.debug(JSON.stringify(send_info));
+
+    const smtp = nodemailer.createTransport({
+        host: 'smtp.gmail.com',   // SMTP 서버명 : smtp.gmail.com
+        port: 465,                // SMTP 포트 : 587
+        secure: true,             // 보안연결(SSL) 필요
+        auth: { user: 'queennm77@gmail.com', pass:'qldystp777'},
+    });
+
+    /** 4) 메일발송 요청 */
+    try {
+        await smtp.sendMail(send_info);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('error');
+    }
+
+    res.status(200).send('ok');
+});
+
 
 /** 상품에 대한 Restful API 정의하기 */
 // 위의 형태처럼 개별적인 함수로 구현 가능하지만 대부분 하나의 URL에 메서드 체인을 사용해서 4가지 전송방식을 한번에 구현
