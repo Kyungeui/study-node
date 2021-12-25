@@ -117,9 +117,12 @@ app.use(methodOverride("_method")); // HTML form
 // static 모듈에 연결된 폴더 안에서 해당 경로를 탐색한다.
 const public_path = path.join(__dirname, "../public");
 const upload_path = path.join(__dirname, "../_files/upload");
+const thumb_path = path.join(__dirname, "../_files/thumb");
 app.use("/", static(public_path));
 // -> upload 폴더의 웹  상의 위치 : http://아이피:포트번호/upload
 app.use("/upload", static(upload_path));
+// -> 썸네일 이미지가 생성될 폴더의 웹 상의 위치 : http://아이피:포트번호/thumb
+app.use("/thumb", static(thumb_path));
 
 /** favicon 설정 */
 app.use(favicon(public_path + "/favicon.png"));
@@ -137,6 +140,8 @@ const multipart = multer({
     destination: (req, file, callback) => {
       // 폴더 생성
       fileHelper.mkdirs(upload_path);
+      fileHelper.mkdirs(thumb_path);
+
       console.debug(file);
 
       // 업로드 정보에 백엔드의 업로드 파일 저장 폴더 위치를 추가한다.
@@ -154,6 +159,7 @@ const multipart = multer({
       const saveName = new Date().getTime().toString() + extName.toLowerCase();
       // 업로드 정보에 백엔드의 파일 이름을 추가한다.
       file.savename = saveName;
+      file.path = path.join(file.dir, saveName);
       // 업로드 정보 파일에 접근할 수 있는 URL값 추가
       file.url = path.join("/upload", saveName).replace(/\\/gi, "/");
       // 구성된 정보를 req 객체에게 추가

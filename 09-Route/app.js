@@ -156,6 +156,7 @@ const multipart = multer({
       const saveName = new Date().getTime().toString() + extName.toLowerCase();
       // 업로드 정보에 백엔드의 파일 이름을 추가한다.
       file.savename = saveName;
+      app.use("/", static(public_path));
       // 업로드 정보 파일에 접근할 수 있는 URL값 추가
       file.url = path.join("/upload", saveName).replace(/\\/gi, "/");
       // 구성된 정보를 req 객체에게 추가
