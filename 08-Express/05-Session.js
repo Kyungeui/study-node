@@ -130,16 +130,14 @@ const cookie_encrypt_key = "helloworld";
 app.use(cookieParser(cookie_encrypt_key));
 
 /** 세션 설정 */
-app.use(
-  expressSession({
+app.use(expressSession({
     // 암호화 키
     secret: cookie_encrypt_key,
     // 세션을 쿠키 상태로 클라이언트에게 노출시킬지 여부
     resave: false,
     // 세션이 저장되기 전에 기존의 세션을 초기화 상태로 만들지 여부
-    saveUninitialized: false,
-  })
-);
+    saveUninitialized: false
+  }));
 
 /*--------------------------------------------------------
 | 5) 각 URL별 백엔드 기능 정의
@@ -407,8 +405,7 @@ router
   });
 
 /** LOGIN */
-router
-  .route("/session.login")
+router.route("/session/login")
   .post((req, res, next) => {
     const id = req.body.id;
     const pw = req.body.pw;
@@ -453,8 +450,8 @@ router
     res.status(200).send(json);
   })
   .get((req, res, next) => {
-    const id = req.body.id;
-    const pw = req.body.pw;
+    const id = req.session.id;
+    const pw = req.session.pw;
 
     let result_code = null;
     let result_msg = null;

@@ -521,8 +521,8 @@ router
     res.status(200).send(json);
   })
   .get((req, res, next) => {
-    const id = req.body.id;
-    const pw = req.body.pw;
+    const id = req.session.id;
+    const pw = req.session.pw;
 
     let result_code = null;
     let result_msg = null;

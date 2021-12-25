@@ -1,5 +1,6 @@
 module.exports = (app) => {
   const router = require("express").Router();
+  const logger = require("../../helper/LogHelper");
 
   // 1) router.route("url경로").get|post|put|delete((req,res)) => {});
   // 2) router.get|post|put|delete("url경로", (req,res) => {});
@@ -89,8 +90,8 @@ module.exports = (app) => {
       res.status(200).send(json);
     })
     .get((req, res, next) => {
-      const id = req.body.id;
-      const pw = req.body.pw;
+      const id = req.session.id;
+      const pw = req.session.pw;
 
       let result_code = null;
       let result_msg = null;
