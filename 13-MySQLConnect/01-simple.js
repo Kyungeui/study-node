@@ -1,6 +1,6 @@
 /** (1) mysql 모듈 불러오기 */
 // npm install mysql2 --save
-const mysql = require('mydql2');
+const mysql = require('mysql2');
 
 /** (2) mysql 모듈 객체 생성 및  접속 정보 설정 */
 const dbcon = mysql.createConnection({
