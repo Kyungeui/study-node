@@ -6,6 +6,7 @@ const config =require("../helper/_config");
 const logger = require("../helper/LogHelper");
 const util = require("../helper/UtilHelper");
 const fileHelper = require("../helper/FileHelper");
+const webHelper = require('../helper/WebHelper')
 // 내장모듈
 const url = require("url");
 const path = require("path");
@@ -23,6 +24,8 @@ const expressSession = require("express-session");  // Session 처리
 /*--------------------------------------------------------
 | 2) Express 객체 생성
 ----------------------------------------------------------*/
+// 여기서 생성한 app 객체의 use() 함수를 사용해서
+// 각종 외부 기능, 설정 내용, URL을 계속해서 확장하는 형태로 구현이 진행된다.
 const app = express();
 
 /*--------------------------------------------------------
@@ -134,38 +137,18 @@ app.use(require('./controllers/Department')(app));
 
 // 런타임 에가 발생한 경우에 대한 일괄 처리
 app.use((err, req, res, next) => {
-    logger.error(err);
 
-    let status = 500;
-    let msg = null;
-
-    if (!isNaN(err.message)) {
-        status = parseInt(err.message);
-    }
-
-    switch (status) {
-        case 400:
-            msg = '필수 파라미터가 없습니다.'
-            break;
-        default:
-            msg = '요청을 처리하는데 실패햿습니다.'
-            break;
-    }
-
-    res.status(500).send({
-        'rt': status,
-        'rtmsg': msg,
-        'pubdate': new Date().toISOString() 
-    });
+  if(err instanceof BadRequestException) {
+    res.sendError(err);
+  } else {
+    res.sendError(new RuntimeException(err.message));
+  }
 });
 
 // 앞에서 정의하지 않은 그 밖의 URL에 대한 일괄 처리
 app.use("*", (req, res, next)=> {
-    res.status(404).send({
-        'rt': 404,
-        'rtmsg': '페이지를 찾을 수 없습니다.',
-        'pubdate': new Date().toISOString()
-    });
+    const err = new PageNotFoundException();
+    res,sendNotFound();
 });
 
 

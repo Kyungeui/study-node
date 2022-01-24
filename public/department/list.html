@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학과관리 ::: MySchool</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">MySchool</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/department/list.html">학과관리</a></li>
+                    <li><a href="/professor/list.html">교수관리</a></li>
+                    <li><a href="/student/list.html">학생관리</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- body -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <colgroup>
+                    <col width="25%" />
+                    <col width="25%" />
+                    <col width="25%" />
+                    <col width="25%" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class='text-center'>학과번호</th>
+                        <th class='text-center'>학과이름</th>
+                        <th class='text-center'>학과위치</th>
+                        <th class='text-center'>-</th>
+                    </tr>
+                </thead>
+                <tbody id="listBody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <hr />
+        <div class="container">
+            <div class="clearfix">
+                <div class="pull-right">
+                    copyright&copy;2022. ezenac.co.kr
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script id="department-list-template" type="text/x-handlebars-template">
+        {{#each item}}
+            <tr>
+                <td class="text-center">{{deptno}}</td>
+                <td class="text-center">{{dname}}</td>
+                <td class="text-center">{{loc}}</td>
+                <td class="text-center">
+                    <a href="/department/edit.html?deptno={{deptno}}" class="btn btn-warning btn-xs btn-edit">수정</a>
+                    <a href="#" class="btn btn-danger btn-xs btn-delete" data-deptno="{{deptno}}" data-dname="{{dname}}">삭제</a>
+                </td>
+            </tr>
+        {{/each}}
+    </script>
+
+    <script>
+        (async () => {
+            // ajax 결과가 저장될 json
+            let json = null;
+
+            // ajax 요청
+            try {
+                const response = await axios.get('/department');
+                json = response.data;
+            } catch (e) {
+                // 에러가 발생한 경우 백엔드가 주는 json 받기
+                const data = e.response.data;
+                alert("[" + data.rt + "] " + data.rtmsg);
+            }
+
+            // ajax결과가 존재한다면?
+            if (json != null) {
+                const source = document.querySelector("#department-list-template").innerHTML;
+                const template = Handlebars.compile(source);
+                const html = template(json);
+
+                document.querySelector("#listBody").insertAdjacentHTML('beforeend', html);
+
+                // 삭제 버튼에 대한 이벤트 처리
+                const btnDelete = document.querySelectorAll(".btn-delete");
+                Array.from(btnDelete).map((v.i)) => {
+                    v.addEventListener("click", async e => {
+                        e.preventDefault();
+
+                        // 클릭된 버튼 자신
+                        const current = e.currentTarget;
+
+                        // 클릭된 버튼에 숨겨진 data 속성값들을 가져온다.
+                        const deptno = current.dataset.deptno;
+                        const dname = current.dataset.dname;
+                        //console.log("%s,%s", deptno,dname);
+
+                        if (confirm('정말' + dname + '(을)를 삭제하시겠습니까?')) {
+                            //ajax를 통한 삭제 처리
+                            try {
+                                const url = '/department/' + deptno;
+                                await axios.delete(url);
+                            } catch (e) {
+                                // 에러가 발생한 경우 백엔드가 주는 json 받기 
+                                const data = e.response.data;
+                            }
+                        }
+                    })
+                }
+            }
+        })();
+    </script>
+</body>
+</html>
