@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학과관리 ::: MySchool</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">마이스쿨</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/department/list.html">학과관리</a></li>
+            <li><a href="/professor/list.html">교수관리</a></li>
+            <li><a href="/student/list.html">학생관리</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- body -->
+    <div class="container">
+      <!-- 검색풀 + 추가페이지 이동 링크 -->
+      <div class="clearfix">
+        <div class="pull-right">
+          <!-- 대부분의 검색 기능은 action 속성이 자기 스스로에게 전달됨 -->
+          <form action="list.html" id="frmSearch" method="get">
+            <div class="input-group-btn" style="width: 320px">
+              <input type="search" class="form-control" name="query" />
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-info">검색</button>
+                <a href="./add.html" class="btn btn-primary">학과추가</a>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <colgroup>
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="text-center">학과번호</th>
+              <th class="text-center">학과이름</th>
+              <th class="text-center">학과위치</th>
+              <th class="text-center">-</th>
+            </tr>
+          </thead>
+          <tbody id="listBody"></tbody>
+        </table>
+      </div>
+      <!-- 페이지 번호 구현 -->
+      <div class="text-center">
+        <ul class="pagenation"></ul>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <hr />
+      <div class="container">
+        <div class="clearfix">
+          <div class="pull-right">copyright&copy;2022. ezenac.co.kr</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <div data-include="/department/inc/header.html"></div> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src=""></script>
+  </body>
+</html>

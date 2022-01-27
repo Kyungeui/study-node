@@ -58,6 +58,37 @@ module.exports = (app) => {
         res.sendJson({'item': json});
     });
 
+
+
+
+
+
+    /** 전체 목록 조회 --> Read(SELECT) - (2) */
+    router.get("/department/all", async (req, res, next) => {
+        // 데이터 조회 결과가 저장될 빈 변수
+        let json = null;
+
+        try {
+            // 데이터베이스 접속
+            dbcon = await mysql2.createConnection(config.database);
+            await dbcon.connect();
+            // 데이터 조회
+            let sql1 = 'SELECT deptno, dname, loc FROM department';
+            const [result1] = await dbcon.query(sql);
+            json = result;
+        } catch (err) {
+            return next(err);
+        } finally {
+            dbcon.end();
+        }   
+        // 모든 처리에 성공했으므로 정상 조회 결과 구성
+        res.sendJson({'item': json});
+    });
+
+
+
+
+
     /** 특정 항목에 대한 상세 조회 --> Read(SELECT) */
     router.get("/department/:deptno", async (req, res, next) => {
         const deptno = req.get.deptno;
