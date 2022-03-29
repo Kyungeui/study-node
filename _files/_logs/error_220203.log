@@ -1,0 +1,240 @@
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] -----------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] |       Start Express Server       |
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] -----------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] server address => http://192.168.0.9:3000
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] -----------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]32ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/page2
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]2ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/favicon.ico
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]28ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/ex08-7/test.html
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]4ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [POST]http://192.168.0.9:3000/mail/simple
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]147ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [POST]http://192.168.0.9:3000/mail/simple
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]2ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/ex08-7/mail.html
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]3ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/ex08-7/test.html
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]3ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/ex08-7/mail.html
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]3ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [POST]http://192.168.0.9:3000/mail/simple
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]2ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/unknown/node-fetch(1.0) /unknown
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/favicon.ico
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]2ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] -----------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] |       Start Express Server       |
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] -----------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] server address => http://192.168.0.9:3000
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] -----------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/ex08-7/mail.html
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]6ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [POST]http://192.168.0.9:3000/mail/simple
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]42ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트가 접속했습니다.
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [client]::ffff:192.168.0.9/OS X/Chrome(97.0.4692.99) /Apple Mac
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] [GET]http://192.168.0.9:3000/ex08-7/test.html
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] 클라이언트의 접속이 종료되었습니다. ::: [runtime]2ms
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } [debug] ----------------------------------------
